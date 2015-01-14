@@ -17,7 +17,7 @@
 	<li>FTP</li>
 </ul>
 
-user: user@suger.com
-senha: adm
+<p>user: user@suger.com</p>
+<p>senha: adm</p>
 
 <p>Demo: <a href="#">SUGER</a></p>
