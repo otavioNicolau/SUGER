@@ -3,7 +3,7 @@
 <b>CONHECIMENTOS APLICADO:</b>
 
 <ul>
-	<li>Domínio na linguagem PHP</li>
+	<li>Domínio da linguagem PHP</li>
 	<li>Programação Orientação a Objetos</li>
 	<li>Padrão de projeto Model-view-controller (MVC)</li>
 	<li>Framework Laravel PHP</li>
