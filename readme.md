@@ -20,4 +20,4 @@
 <p>user: user@suger.com</p>
 <p>senha: adm</p>
 
-<p>Demo: <a href="http://guilhermesystem.esy.es/">SUGER</a></p>
+<p>Demo: <a href="http://guilhermesystem.esy.es/" target="_blank">SUGER</a></p>
