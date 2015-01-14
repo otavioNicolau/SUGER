@@ -1,0 +1,54 @@
+<?php $__env->startSection('main'); ?>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header texto"><?php echo Session::get('nome'); ?> <small>DICIPLINA</small></h1>
+    </div>
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-md-12">
+        <?php if($errors->any()): ?>
+        <div class="alert alert-danger">
+            <ul>
+                <?php echo implode('', $errors->all('<li class="error">:message</li>')); ?>
+
+            </ul>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php echo Form::model($diciplina, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('diciplinas.update', $diciplina->id))); ?>
+
+<div class="panel panel-primary">
+    <div class="panel-heading"> <h3 class="panel-title"><B>ATUALIZAR DICIPLINA</B></h3> </div>
+    <div class="panel-body">
+        
+        <?php echo Form::hidden('func_dados', 1, array('class'=>'form-control', 'placeholder'=>'Func_dados')); ?>
+
+        <div class="form-group">
+            <div class="col-sm-6">
+                <?php echo Form::label('disciplinas', 'Disciplinas:', array('class'=>'control-label')); ?>
+
+                <?php echo Form::text('disciplinas', Input::old('disciplinas'), array('class'=>'form-control', 'placeholder'=>'Disciplinas')); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-sm-offset-4  col-sm-12">
+                <?php echo Form::submit('ATUALIZAR', array('class' => 'btn btn-lg btn-primary')); ?>
+
+                <?php echo link_to_route('diciplinas.show', 'CANCELAR',Session::get('id'), array('class' => 'btn btn-lg btn-danger')); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo Form::close(); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.scaffold', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,126 @@
+<?php $__env->startSection('main'); ?>
+<?php foreach($funcionais as $funcionai): ?>
+<!-- Page Heading -->
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header texto"><?php echo Session::get('nome'); ?> <small>DADOS FUNCIONAIS</small>
+    <?php echo link_to_route('funcionais.edit', 'ATUALIZAR', $funcionai->id , array('class' => 'btn btn-lg btn-primary col-sm-offset-1')); ?>
+
+    </h1>
+  </div>
+</div>
+<!-- /.row -->
+<div class="form-horizontal">
+  <div class="panel panel-primary">
+    <div class="panel-heading"> <h3 class="panel-title"><B>DADOS FUNCIONAIS</B></h3> </div>
+    <div class="panel-body">
+      <?php echo Form::hidden('func_dados', Input::old('func_dados'), array('class'=>'form-control texto', 'placeholder'=>'Func_dados')); ?>
+
+      <div class="form-group">
+        <div class="col-sm-6">
+          <?php echo Form::label('matricula', 'Matrícula:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('matricula', $funcionai->matricula , array('class'=>'form-control texto', 'placeholder'=>'Matrícula', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-6">
+          <?php echo Form::label('funcao', 'Função:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('funcao', $funcionai->funcao, array('class'=>'form-control texto', 'placeholder'=>'Função', 'disabled')); ?>
+
+        </div>
+      </div>
+      <HR>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <?php echo Form::label('situacao_funcional', 'Situação Funcional:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('situacao_funcional', $funcionai->situacao_funcional, array('class'=>'form-control texto', 'placeholder'=>'Situação Funcional', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('data_de_admissao', 'Data de Admissão:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('data_de_admissao', $funcionai->data_de_admissao, array('class'=>'form-control texto', 'placeholder'=>'Data de Admissão', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('data_de_demissao', 'Data de Demissão:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('data_de_demissao', $funcionai->data_de_demissao, array('class'=>'form-control texto', 'placeholder'=>'Data de Demissão', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('Carga_horaria_semanal', 'Carga horária semanal (horas):', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('carga_horaria_semanal', $funcionai->carga_horaria_semanal, array('class'=>'form-control texto', 'placeholder'=>'Carga horária semanal (horas)', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('final_do_contrato', 'Final do Contrato:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('final_do_contrato', $funcionai->final_do_contrato, array('class'=>'form-control texto', 'placeholder'=>'Final do Contrato', 'disabled')); ?>
+
+        </div>
+      </div>
+      <br>
+      <HR>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <?php echo Form::label('registro', 'Registro:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('registro', $funcionai->registro, array('class'=>'form-control texto', 'placeholder'=>'Registro', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-4">
+          <?php echo Form::label('matricula_anterior', 'Matrícula Anterior:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('matricula_anterior', $funcionai->matricula_anterior, array('class'=>'form-control texto', 'placeholder'=>'Matrícula Anterior', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('data_acesso_funcional', 'Data Acesso Funcional:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('data_acesso_funcional', $funcionai->data_acesso_funcional, array('class'=>'form-control texto', 'placeholder'=>'Data Acesso Funcional', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('letra_numero', 'Letra/Número:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('letra_numero', $funcionai->letra_numero, array('class'=>'form-control texto', 'placeholder'=>'Letra/Número', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('regime_juridico', 'Regime Jurídico:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('regime_juridico', $funcionai->regime_juridico, array('class'=>'form-control texto', 'placeholder'=>'Regime Jurídico', 'disabled' )); ?>
+
+        </div>
+        <div class="col-sm-3">
+          <?php echo Form::label('motivo_contrato', 'Motivo Contrato:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('motivo_contrato', $funcionai->motivo_contrato, array('class'=>'form-control texto', 'placeholder'=>'Motivo Contrato', 'disabled')); ?>
+
+        </div>
+      </div>
+      <BR>
+      <HR>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <?php echo Form::label('data_de_entrada_na_escola', 'Data de entrada na Suger:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('data_de_entrada_na_escola', $funcionai->data_de_entrada_na_escola, array('class'=>'form-control texto', 'placeholder'=>'Data de entrada na escola', 'disabled')); ?>
+
+        </div>
+        <div class="col-sm-4">
+          <?php echo Form::label('data_de_daida_da_escola', 'Data de saída da Suger:', array('class'=>' control-label')); ?>
+
+          <?php echo Form::text('data_de_daida_da_escola', $funcionai->data_de_daida_da_escola, array('class'=>'form-control texto', 'placeholder'=>'Data de saída da escola', 'disabled')); ?>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php endforeach; ?>
+  <?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.scaffold', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,52 @@
+<?php $__env->startSection('main'); ?>
+
+<h1>All Superiors</h1>
+
+<p><?php echo link_to_route('superiors.create', 'Add New Superior', null, array('class' => 'btn btn-lg btn-success')); ?></p>
+
+<?php if($superiors->count()): ?>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Func_dados</th>
+				<th>Classe_do_curso</th>
+				<th>Nome_do_curso</th>
+				<th>Instituicao</th>
+				<th>Situacao_do_curso_superior</th>
+				<th>Ano_de_conclusao</th>
+				<th>Formacao_complementar_pedagogica</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach($superiors as $superior): ?>
+				<tr>
+					<td><?php echo e($superior->func_dados); ?></td>
+					<td><?php echo e($superior->classe_do_curso); ?></td>
+					<td><?php echo e($superior->nome_do_curso); ?></td>
+					<td><?php echo e($superior->instituicao); ?></td>
+					<td><?php echo e($superior->situacao_do_curso_superior); ?></td>
+					<td><?php echo e($superior->ano_de_conclusao); ?></td>
+					<td><?php echo e($superior->formacao_complementar_pedagogica); ?></td>
+                    <td>
+                        <?php echo Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('superiors.destroy', $superior->id))); ?>
+
+                            <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+                        <?php echo Form::close(); ?>
+
+                        <?php echo link_to_route('superiors.edit', 'Edit', array($superior->id), array('class' => 'btn btn-info')); ?>
+
+                    </td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+	There are no superiors
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.scaffold', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

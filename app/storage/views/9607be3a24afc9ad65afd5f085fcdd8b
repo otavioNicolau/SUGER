@@ -1,0 +1,53 @@
+<?php $__env->startSection('main'); ?>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">LISTAGEM DE <small>FÚNCIONARIOS</small>
+        <?php echo link_to_route('dados.create', 'CADASTRAR NOVO', null, array('class' => 'btn btn-lg btn-primary col-sm-offset-4')); ?>
+
+        </h1>
+    </div>
+</div>
+<!-- /.row -->
+<div class="panel panel-primary">
+    <div class="panel-heading"> <h3 class="panel-title"><B>BUSCAR</B></h3> </div>
+    <div class="panel-body">
+        <?php echo Form::open(array('url' => 'find','method'=>'POST', 'class' => 'form-horizontal')); ?>
+
+        <div class="form-group">
+            <div class="col-sm-8">
+                <?php echo Form::text('buscar', Input::old('nome'), array('class'=>'form-control', 'placeholder'=>'Nome ou CPF')); ?>
+
+            </div>
+            <div class="col-sm-4">
+                <?php echo Form::submit('BUSCAR', array('class' => 'btn btn-primary')); ?>
+
+            </div>
+        </div>
+        <?php echo Form::close(); ?>
+
+    </div>
+</div>
+<br><br>
+<?php if($dados->count()): ?>
+<?php foreach($dados as $dado): ?>
+<div class="media">
+    <a class="media-left" href="dados/<?php echo $dado->id; ?>">
+        <?php echo HTML::image('/upload/'.$dado->foto_perfil,'a picture', array('class' => 'img-thumbnail','style'=>'width: 100px; height: 100px')); ?>
+
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading texto"><?php echo e($dado->nome); ?>  <?php echo link_to_route('dados.show', 'ver', array($dado->id), array('class' => 'btn btn-sm btn-primary')); ?></h4>
+        <p><?php echo e($dado->cpf); ?></p>
+        <p><?php echo $dado->celular; ?></p>
+    </div>
+</div>
+<hr>
+
+<?php endforeach; ?>
+<?php echo $dados->links(); ?>
+<?php else: ?>
+    <h3 class="panel-title"><B>NENHUM FUNCIONÁRIO ENCONTRADO.</B></h3>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.scaffold1', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

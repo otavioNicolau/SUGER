@@ -1,0 +1,76 @@
+<?php $__env->startSection('main'); ?>
+
+<h1>All Funcionais</h1>
+
+<p><?php echo link_to_route('funcionais.create', 'Add New Funcionai', null, array('class' => 'btn btn-lg btn-success')); ?></p>
+
+<?php if($funcionais->count()): ?>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Func_dados</th>
+				<th>Matricula</th>
+				<th>Funcao</th>
+				<th>Situacao_funcional</th>
+				<th>Data_de_admissao</th>
+				<th>Data_de_demissao</th>
+				<th>Carga_horaria_semanal</th>
+				<th>Final_do_contrato</th>
+				<th>Registro</th>
+				<th>Matricula_anterior</th>
+				<th>Data_acesso_funcional</th>
+				<th>Letra_numero</th>
+				<th>Regime_juridico</th>
+				<th>Motivo_contrato</th>
+				<th>Regime_especial</th>
+				<th>Concursado</th>
+				<th>Concursado_zona_rural_especifico</th>
+				<th>Data_de_entrada_na_escola</th>
+				<th>Data_de_daida_da_escola</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach($funcionais as $funcionai): ?>
+				<tr>
+					<td><?php echo e($funcionai->func_dados); ?></td>
+					<td><?php echo e($funcionai->matricula); ?></td>
+					<td><?php echo e($funcionai->funcao); ?></td>
+					<td><?php echo e($funcionai->situacao_funcional); ?></td>
+					<td><?php echo e($funcionai->data_de_admissao); ?></td>
+					<td><?php echo e($funcionai->data_de_demissao); ?></td>
+					<td><?php echo e($funcionai->carga_horaria_semanal); ?></td>
+					<td><?php echo e($funcionai->final_do_contrato); ?></td>
+					<td><?php echo e($funcionai->registro); ?></td>
+					<td><?php echo e($funcionai->matricula_anterior); ?></td>
+					<td><?php echo e($funcionai->data_acesso_funcional); ?></td>
+					<td><?php echo e($funcionai->letra_numero); ?></td>
+					<td><?php echo e($funcionai->regime_juridico); ?></td>
+					<td><?php echo e($funcionai->motivo_contrato); ?></td>
+					<td><?php echo e($funcionai->regime_especial); ?></td>
+					<td><?php echo e($funcionai->concursado); ?></td>
+					<td><?php echo e($funcionai->concursado_zona_rural_especifico); ?></td>
+					<td><?php echo e($funcionai->data_de_entrada_na_escola); ?></td>
+					<td><?php echo e($funcionai->data_de_daida_da_escola); ?></td>
+                    <td>
+                        <?php echo Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('funcionais.destroy', $funcionai->id))); ?>
+
+                            <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+                        <?php echo Form::close(); ?>
+
+                        <?php echo link_to_route('funcionais.edit', 'Edit', array($funcionai->id), array('class' => 'btn btn-info')); ?>
+
+                    </td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+	There are no funcionais
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.scaffold', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

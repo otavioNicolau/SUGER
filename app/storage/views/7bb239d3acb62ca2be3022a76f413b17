@@ -1,0 +1,58 @@
+<?php $__env->startSection('main'); ?>
+
+<h1>All Enderecos</h1>
+
+<p><?php echo link_to_route('enderecos.create', 'Add New Endereco', null, array('class' => 'btn btn-lg btn-success')); ?></p>
+
+<?php if($enderecos->count()): ?>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Func_dados</th>
+				<th>Logradouro</th>
+				<th>Numero</th>
+				<th>Complemento</th>
+				<th>Bairro</th>
+				<th>Uf</th>
+				<th>Municipio</th>
+				<th>Distrito</th>
+				<th>Cep</th>
+				<th>Zona_residencial</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach($enderecos as $endereco): ?>
+				<tr>
+					<td><?php echo e($endereco->func_dados); ?></td>
+					<td><?php echo e($endereco->logradouro); ?></td>
+					<td><?php echo e($endereco->numero); ?></td>
+					<td><?php echo e($endereco->complemento); ?></td>
+					<td><?php echo e($endereco->bairro); ?></td>
+					<td><?php echo e($endereco->uf); ?></td>
+					<td><?php echo e($endereco->municipio); ?></td>
+					<td><?php echo e($endereco->distrito); ?></td>
+					<td><?php echo e($endereco->cep); ?></td>
+					<td><?php echo e($endereco->zona_residencial); ?></td>
+                    <td>
+                        <?php echo Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('enderecos.destroy', $endereco->id))); ?>
+
+                            <?php echo Form::submit('Delete', array('class' => 'btn btn-danger')); ?>
+
+                        <?php echo Form::close(); ?>
+
+                        <?php echo link_to_route('enderecos.edit', 'Edit', array($endereco->id), array('class' => 'btn btn-info')); ?>
+
+                    </td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+	There are no enderecos
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.scaffold', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
